@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# my-projects
+
+A personal site / project hub built with Next.js (App Router). `/` is a
+directory page listing every project; each project lives at its own
+`/<slug>` route and shares one global shell — nav, theme, and language.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Projects
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `/profile` — personal introduction / resume
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js (App Router, TypeScript)
+- Tailwind CSS (v4) for styling
+- React Context for shared global state — no external state library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Shared Context
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Every route under `app/*` automatically gets:
 
-## Deploy on Vercel
+- **Theme** (`context/theme-context.tsx`) — light/dark, persisted to
+  `localStorage`, falls back to `prefers-color-scheme`. Applied via a
+  `dark` class on `<html>`.
+- **Language** (`context/lang-context.tsx`) — `en` / `zh-TW`, persisted to
+  `localStorage`, with a simple `t(key)` translation helper backed by
+  `lib/dictionaries.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Both can be set on first load via query params, e.g.
+`http://localhost:3000/?theme=dark&lang=zh-TW` — this also becomes the new
+persisted default for that browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Adding a New Project
+
+1. Create `app/<slug>/page.tsx`.
+2. Add an entry to `lib/projects.ts` (`{ slug, titleKey, descriptionKey }`)
+   and the matching translations in `lib/dictionaries.ts` — this is what
+   makes it show up as a card on `/`.
+3. Use `useTheme()` / `useLang()` from context instead of re-declaring
+   per-project state.
+
+## Commands
+
+```bash
+npm run dev       # local dev server
+npm run build     # production build (check this passes before shipping)
+npm run lint      # lint
+```
+
+See `CLAUDE.md` for the full project conventions.
