@@ -12,4 +12,9 @@ export const projects: Project[] = [
     titleKey: "projects.profile.title",
     descriptionKey: "projects.profile.description",
   },
+  {
+    slug: "accounting",
+    titleKey: "projects.accounting.title",
+    descriptionKey: "projects.accounting.description",
+  }
 ];

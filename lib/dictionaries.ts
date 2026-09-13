@@ -53,6 +53,10 @@ export type Dictionary = {
       title: string;
       description: string;
     };
+    accounting: {
+      title: string;
+      description: string;
+    };
   };
 };
 
@@ -144,6 +148,10 @@ export const dictionaries: Record<"en" | "zh-TW", Dictionary> = {
         title: "Profile / Resume",
         description: "A short introduction, my background, and how to reach me.",
       },
+      accounting: {
+        title: "Accounting",
+        description: "A personal accounting app for tracking my income and expenses.",
+      },
     },
   },
   "zh-TW": {
@@ -230,6 +238,10 @@ export const dictionaries: Record<"en" | "zh-TW", Dictionary> = {
       profile: {
         title: "個人簡介 / 履歷",
         description: "簡短的自我介紹、背景經歷，以及如何聯絡我。",
+      },
+      accounting: {
+        title: "Accounting",
+        description: "A personal accounting app for tracking my income and expenses.",
       },
     },
   },
