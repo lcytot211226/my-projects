@@ -2,6 +2,7 @@ export type Project = {
   slug: string;
   titleKey: string;
   descriptionKey: string;
+  icon: string;
 };
 
 // Single source of truth for every project mounted under "/".
@@ -11,10 +12,12 @@ export const projects: Project[] = [
     slug: "profile",
     titleKey: "projects.profile.title",
     descriptionKey: "projects.profile.description",
+    icon: "👤",
   },
   {
     slug: "accounting",
     titleKey: "projects.accounting.title",
     descriptionKey: "projects.accounting.description",
+    icon: "💰",
   }
 ];

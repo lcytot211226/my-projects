@@ -47,9 +47,14 @@ export default function Home() {
               className="group relative overflow-hidden rounded-2xl border border-zinc-900/10 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-white/10 dark:bg-zinc-900"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-indigo-500 to-fuchsia-500 opacity-0 transition-opacity group-hover:opacity-100" />
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
-                {t(project.titleKey)}
-              </h3>
+              <div className="flex items-center gap-2">
+                <span className="text-xl" aria-hidden="true">
+                  {project.icon}
+                </span>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+                  {t(project.titleKey)}
+                </h3>
+              </div>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 {t(project.descriptionKey)}
               </p>
