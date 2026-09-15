@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
+const TRACK_MY_EXPENSE = process.env.TRACK_MY_EXPENSE;
+
 export default function AccountingPage() {
-  redirect("https://track-my-expense-silk.vercel.app");
+  redirect(TRACK_MY_EXPENSE || "https://track-my-expense.subani.cc");
 }
